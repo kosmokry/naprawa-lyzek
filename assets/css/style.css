@@ -464,3 +464,12 @@ html{overflow-x:hidden}body{overflow-x:clip;width:100%}
 }
 @media(max-width:1000px){.hero.top .bg img{object-position:100% bottom}}
 @media(max-width:1000px){.hero.top .bg{margin-top:-44px;aspect-ratio:9/8}}
+/* мобильный блок «цех»: фото на весь экран, заголовок поверх на всю ширину */
+@media(max-width:1000px){
+  .wsr{height:88svh;min-height:540px}
+  .wsr .fr{position:absolute;inset:0;height:auto;clip-path:inset(8% 5% 8% 5% round 6px)}
+  .wsr .fr img{object-position:68% center}
+  .wsr .fr::after{display:block;background:linear-gradient(0deg,rgba(8,9,11,.88) 0%,rgba(8,9,11,.6) 30%,rgba(8,9,11,0) 62%)}
+  .wsr .tx{position:absolute;left:var(--pad);right:var(--pad);top:auto;bottom:clamp(24px,5vh,44px);width:auto;padding:0;gap:14px}
+  .wsr h2{max-width:none;font-size:clamp(30px,9.4vw,56px);line-height:.98}
+}

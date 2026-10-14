@@ -473,3 +473,11 @@ html{overflow-x:hidden}body{overflow-x:clip;width:100%}
   .wsr .tx{position:absolute;left:var(--pad);right:var(--pad);top:auto;bottom:clamp(24px,5vh,44px);width:auto;padding:0;gap:14px}
   .wsr h2{max-width:none;font-size:clamp(30px,9.4vw,56px);line-height:.98}
 }
+
+@media(max-width:1000px){
+  .cs .pin{min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+  .cs .top{padding-top:0;padding-bottom:22px}
+  .cs .trk{padding-bottom:0;width:max-content;overflow:visible}
+  .card{width:min(74vw,340px)}
+  .card .im img{width:118%}
+}

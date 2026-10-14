@@ -89,14 +89,13 @@ mm.add('(min-width:1001px)',()=>{
   tl.to({}, {duration:.01},N);
 });
 
-/* horizontal cases */
-mm.add('(min-width:1001px)',()=>{
+/* horizontal cases: вертикальный скролл прокручивает ленту до конца, на всех экранах */
+mm.add('(min-width:1px)',()=>{
   const c=$('.cs');if(!c)return;const trk=$('.trk',c);
-  const dist=()=>trk.scrollWidth-innerWidth;
+  const dist=()=>Math.max(0,trk.scrollWidth-innerWidth);
   const t=gsap.to(trk,{x:()=>-dist(),ease:'none',scrollTrigger:{trigger:$('.pin',c),start:'top top',end:()=>'+='+dist(),pin:true,scrub:.6,invalidateOnRefresh:true,anticipatePin:1}});
   $$('.card .im img',c).forEach(im=>gsap.fromTo(im,{xPercent:-8},{xPercent:8,ease:'none',scrollTrigger:{trigger:im.closest('.card'),containerAnimation:t,start:'left right',end:'right left',scrub:true}}));
 });
-mm.add('(max-width:1000px)',()=>{const trk=$('.cs .trk');if(trk){trk.style.overflowX='auto';trk.style.width='auto';trk.style.scrollSnapType='x mandatory';$$('.card',trk).forEach(c=>c.style.scrollSnapAlign='start')}});
 
 /* workshop reveal */
 const wsr=$('.wsr');if(wsr){const fr=$('.fr',wsr);gsap.to(fr,{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:wsr,start:'top 90%',end:'top 5%',scrub:true}});}

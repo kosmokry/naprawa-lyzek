@@ -481,3 +481,6 @@ html{overflow-x:hidden}body{overflow-x:clip;width:100%}
   .card{width:min(74vw,340px)}
   .card .im img{width:118%}
 }
+
+.cs .trk{will-change:transform;backface-visibility:hidden}
+@media(pointer:coarse){.card .im img{transform:none!important;width:100%}}

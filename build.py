@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-import os, shutil
+import os, shutil, time
+VER = str(int(time.time()))
 from content import T, LANGS
 ROOT = os.path.dirname(os.path.abspath(__file__))
 PAGES = ['index', 'excavators', 'loaders', 'works', 'contacts']
@@ -36,7 +37,7 @@ def head(l, page, title, desc):
 <title>{title}</title><meta name="description" content="{desc}">{alts}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;700;800&family=Onest:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap&subset=cyrillic,latin-ext" rel="stylesheet">
-<link rel="stylesheet" href="{A}css/style.css"></head><body data-page="{page}">'''
+<link rel="stylesheet" href="{A}css/style.css?v={VER}"></head><body data-page="{page}">'''
 
 
 def chrome_top(l, page, pre=True):
@@ -65,7 +66,7 @@ def footer(l):
 
 
 def scripts():
-    return f'<script src="{A}vendor/gsap.min.js"></script><script src="{A}vendor/ScrollTrigger.min.js"></script><script src="{A}vendor/lenis.min.js"></script><script src="{A}js/main.js"></script></body></html>'
+    return f'<script src="{A}vendor/gsap.min.js"></script><script src="{A}vendor/ScrollTrigger.min.js"></script><script src="{A}vendor/lenis.min.js"></script><script src="{A}js/main.js?v={VER}"></script></body></html>'
 
 
 def hero(img, h1, sub, crumb=None, page=False, cta=None, meta=None, scroll=None, pos='60% 50%'):

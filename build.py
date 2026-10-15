@@ -17,13 +17,21 @@ def typo(html, l):
     pat = _re.compile(r'(?i)(?<![\w-])(' + _W[l] + r')[ \t]+(?=\S)')
     num = _re.compile(r'(\d)[ ](м²|m²|кв|шт|зл|zł|%)')
     out = []
-    for part in _re.split(r'(<[^>]+>)', html):
+    parts = _re.split(r'(<[^>]+>)', html)
+    for i, part in enumerate(parts):
         if part.startswith('<'):
             out.append(part); continue
         part = pat.sub(lambda m: m.group(1) + '\u00a0', part)
         part = pat.sub(lambda m: m.group(1) + '\u00a0', part)  # цепочки «в на»
         part = num.sub(lambda m: m.group(1) + '\u00a0' + m.group(2), part)
+        part = _re.sub(r'(\S) (\d{1,2}/\d{1,2})(?!\d)', lambda m: m.group(1) + '\u00a0' + m.group(2), part)
         part = part.replace(' —', '\u00a0—')
+        # точку в конце заголовков, подзаголовков и абзацев не ставим
+        nxt = parts[i + 1] if i + 1 < len(parts) else ''
+        if _re.match(r'</(p|h1|h2|h3|h4|li|span|div|small|strong|label)>', nxt):
+            s = part.rstrip()
+            if s.endswith('.') and not s.endswith('..'):
+                part = s[:-1] + part[len(s):]
         out.append(part)
     return ''.join(out)
 

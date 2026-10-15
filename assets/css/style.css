@@ -535,3 +535,16 @@ form .btn{padding:0 0 0 26px}
 form .btn .ar{width:78px}
 .btn .ar{justify-content:center;align-content:center;grid-template-columns:16px;grid-template-rows:16px}
 .btn.sm{padding:0 0 0 20px}
+
+/* ленты кейсов: всё (заголовок, фото и подписи) помещается в один экран */
+@media(min-width:1001px){
+  .cs .pin{height:100svh;min-height:600px;display:flex;flex-direction:column;justify-content:center;--ch:calc(100svh - 520px)}
+  .cs .top{padding-top:clamp(84px,10.5vh,110px);padding-bottom:clamp(12px,2.5vh,24px)}
+  .cs .top .h2{font-size:clamp(26px,min(3.8vw,6.8vh),70px)}
+  .cs .trk{padding-bottom:0}
+  .card{width:calc(max(var(--ch),240px)*.8)}
+  .card .im{aspect-ratio:auto;height:max(var(--ch),240px)}
+  .card.end{aspect-ratio:auto;height:max(var(--ch),240px);align-self:flex-start}
+  .card .t{padding-top:14px}
+  .card h3{font-size:clamp(16px,1.6vw,26px)}
+}

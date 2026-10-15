@@ -22,7 +22,8 @@ $$('.nav a').forEach(a=>a.addEventListener('click',()=>{document.body.classList.
 
 /* text splitting */
 function splitWords(el){const nodes=[...el.childNodes];el.innerHTML='';nodes.forEach(n=>{if(n.nodeType===3){n.textContent.split(/([ \t\r\n]+)/).forEach(p=>{if(!p)return;if(/^[ \t\r\n]+$/.test(p)){el.append(' ');return}const w=document.createElement('span');w.className='w';w.innerHTML='<i>'+p+'</i>';el.append(w)})}else{const c=n.cloneNode(true);const inner=document.createElement(c.tagName.toLowerCase());inner.className=c.className;[...c.textContent.split(/([ \t\r\n]+)/)].forEach(p=>{if(!p)return;if(/^[ \t\r\n]+$/.test(p)){inner.append(' ');return}const w=document.createElement('span');w.className='w';w.innerHTML='<i>'+p+'</i>';inner.append(w)});el.append(inner)}});return $$('.w>i',el)}
-$$('[data-split]').forEach(el=>{el._i=splitWords(el)});
+function glue(el){const ws=$$('.w',el);ws.forEach((w,i)=>{const t=w.textContent;if(i>0&&/^[,.:;!?)»…]+$/.test(t)){ws[i-1].querySelector('i').append(t);w.remove()}})}
+$$('[data-split]').forEach(el=>{splitWords(el);glue(el);el._i=$$('.w>i',el)});
 
 /* page transition */
 const curtain=$('.curtain');

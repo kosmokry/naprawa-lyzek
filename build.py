@@ -28,7 +28,7 @@ def typo(html, l):
     return ''.join(out)
 
 LOGO = '<svg viewBox="0 0 34 26" fill="none"><path d="M2 3h19l9 9-3 11H9L2 3Z" stroke="#f1efea" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 23v3M15 23v3M21 23v3" stroke="#ff5a0a" stroke-width="2.4" stroke-linecap="round"/></svg>'
-ARROW = '<span class="ar">→</span>'
+ARROW = '<span class="ar"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span>'
 
 
 def head(l, page, title, desc):
@@ -74,7 +74,7 @@ def hero(img, h1, sub, crumb=None, page=False, cta=None, meta=None, scroll=None,
     c = f'<div class="crumb mono or">{crumb}</div>' if crumb else ''
     btns = ''
     if cta:
-        btns = f'<div class="cta"><a class="btn" href="contacts.html#form">{cta[0]}{ARROW}</a><a class="btn o" href="#dirs">{cta[1]}</a></div>'
+        btns = f'<div class="cta"><a class="btn" href="contacts.html#form">{cta[0]}{ARROW}</a><a class="btn o" href="#dirs">{cta[1]}{ARROW}</a></div>'
     m = ''
     s = f'<span class="scroll mono">{scroll} ↓</span>' if scroll else ''
     return f'''<section class="hero {'page' if page else ''} {'top' if 'f-hero' in img else ''} {'bottom' if 'shop-real' in img else ''}"><div class="bg"><img src="{A}img/{img}" alt="" style="object-position:{pos}"></div>{s}

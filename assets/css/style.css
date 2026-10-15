@@ -550,3 +550,6 @@ form .btn .ar{width:78px}
 }
 .cs .top{margin:0;max-width:none;width:100%;align-self:stretch;padding-left:var(--line);box-sizing:border-box}
 .cs .trk{align-self:flex-start}
+.ft .wm{display:block;margin:0;padding-left:var(--line);padding-right:var(--pad);max-width:none}
+.ft .wm img{width:100%;max-width:none;display:block}
+.ft .cols,.ft .leg{padding-left:var(--line)}

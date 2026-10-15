@@ -77,7 +77,9 @@ def hero(img, h1, sub, crumb=None, page=False, cta=None, meta=None, scroll=None,
         btns = f'<div class="cta"><a class="btn" href="contacts.html#form">{cta[0]}{ARROW}</a><a class="btn o" href="#dirs">{cta[1]}{ARROW}</a></div>'
     m = ''
     s = f'<span class="scroll mono">{scroll} ↓</span>' if scroll else ''
-    return f'''<section class="hero {'page' if page else ''} {'top' if 'f-hero' in img else ''} {'bottom' if 'shop-real' in img else ''}"><div class="bg"><img src="{A}img/{img}" alt="" style="object-position:{pos}"></div>{s}
+    d = img.replace('.jpg', '-d.jpg')
+    pic = (f'<picture><source media="(min-width:1001px)" srcset="{A}img/{d}"><img src="{A}img/{img}" alt="" style="object-position:{pos}"></picture>' if 'f-hero' in img else f'<img src="{A}img/{img}" alt="" style="object-position:{pos}">')
+    return f'''<section class="hero {'page' if page else ''} {'top' if 'f-hero' in img else ''} {'bottom' if 'shop-real' in img else ''}"><div class="bg">{pic}</div>{s}
 <div class="in">{c}<h1 data-split>{words}</h1><div class="row"><p class="sub">{sub}</p>{btns}</div></div></section>'''
 
 

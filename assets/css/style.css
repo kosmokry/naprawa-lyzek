@@ -548,3 +548,5 @@ form .btn .ar{width:78px}
   .card .t{padding-top:14px}
   .card h3{font-size:clamp(16px,1.6vw,26px)}
 }
+.cs .top{margin:0;max-width:none;width:100%;align-self:stretch;padding-left:var(--line);box-sizing:border-box}
+.cs .trk{align-self:flex-start}
